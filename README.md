@@ -27,6 +27,7 @@ At this point you should be able to start the server with
 ```bash
 $ bundle exec ruby app.rb
 ```
+You can access the server at `http://localhost:3000`
 
 ## Creating migration files
 To create a migration file when changing the database schema run
