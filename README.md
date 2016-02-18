@@ -40,3 +40,10 @@ $ bundle exec rake db:create_migration NAME=create_questions
 ```
 
 After you create a migration you'll have to run `bundle exec rake db:migrate` again to reflect those changes in the database.
+
+## Running a console
+To run a console where you can do things like `Level.all` `Question.first` run
+```bash
+$ bin/console
+```
+<kbd>CTRL</kbd>+<kbd>D</kbd> will quit IRB
