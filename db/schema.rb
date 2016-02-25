@@ -11,8 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160225133353) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "percentage"
+    t.integer  "question_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "entries", force: :cascade do |t|
     t.integer  "question_id"
@@ -21,9 +28,6 @@ ActiveRecord::Schema.define(version: 20160225133353) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=======
-ActiveRecord::Schema.define(version: 20160225122635) do
->>>>>>> 29a9bb24b1bb24bfaa1b13d54cb5cf79f57e48f5
 
   create_table "levels", force: :cascade do |t|
     t.integer  "number"
