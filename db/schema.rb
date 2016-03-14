@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225133353) do
+ActiveRecord::Schema.define(version: 20160314154140) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "percentage"
+    t.integer  "percent"
     t.integer  "question_id"
     t.string   "text"
     t.datetime "created_at"
