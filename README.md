@@ -14,7 +14,7 @@ When you've got bundler installed you can install the Gems for the project.
 `cd` into the project. After that run:
 
 ```bash
-$ bundle install
+$ bundle install --without production
 ```
 
 ## Create the database
