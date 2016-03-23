@@ -49,45 +49,43 @@ get '/question/:id' do
 end
 
 post '/createUser' do
-	content_type :json
-	payload = JSON.parse(request.body.read)
-	
-	age = payload[:age].to_i
-	gender = payload[:gender].to_i
-	education = payload[:education].to_i
-	newUser = User.create({age: age, gender: gender,education:education})
-	newUser.as_json.to_json
+  content_type :json
+  payload = JSON.parse(request.body.read, symbolize_names: true)
+
+  age = payload[:age].to_i
+  gender = payload[:gender].to_i
+  education = payload[:education].to_i
+  newUser = User.create({ age: age, gender: gender, education: education })
+  newUser.as_json.to_json
 
 
 end
 
 post '/createEntry' do
-	content_type :json
-	payload = JSON.parse(request.body.read)
-	
-	question_id = payload[:question_id].to_i
-	user_id = payload[:user_id].to_i
-	text = payload[:text]
-	newEntry = Entry.create({question_id: question_id, user_id: user_id,text:text})
-	newEntry.as_json.to_json
+  content_type :json
+  payload = JSON.parse(request.body.read, symbolize_names: true)
+
+  question_id = payload[:question_id].to_i
+  user_id = payload[:user_id].to_i
+  text = payload[:text]
+  newEntry = Entry.create({ question_id: question_id, user_id: user_id, text: text })
+  newEntry.as_json.to_json
 
 
 end
 
-get '/user' do 
-	 content_type :json
-	User.all.as_json().to_json
-end 
+get '/user' do
+  content_type :json
+  User.all.as_json.to_json
+end
 
 get '/user/:id' do
   content_type :json
   user = User.find_by_id(params[:id])
   if user
-    User.all.as_json().to_json
+    User.all.as_json.to_json
   else
     status 404
     'Not found'
   end
 end
-		
-	
