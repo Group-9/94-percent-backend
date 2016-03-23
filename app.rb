@@ -68,30 +68,26 @@ post '/createEntry' do
 	question_id = payload[:question_id].to_i
 	user_id = payload[:user_id].to_i
 	text = payload[:text]
-	newEntry = User.create({question_id: question_id, user_id: user_id,text:text})
+	newEntry = Entry.create({question_id: question_id, user_id: user_id,text:text})
 	newEntry.as_json.to_json
 
 
 end
 
-get '/user/:age/:gender/:education' do
+get '/user' do 
+	 content_type :json
+	User.all.as_json().to_json
+end 
 
-	@age = params[:age].to_i
-	@gender = params[:gender]
-	@education = params[:education]
-	if(@age < 2)
-		if @gender == "true"
-			"You have just created a user that is #{@age} year old and is male."
-		else
-		"You have just created a user that is #{@age} year old and is female."
-		end
-	else
-		if @gender == "true"
-			"You have just created a user that is #{@age} years old and is male." 
-		else
-			"You have just created a user that is #{@age} years old and is female."
-		end
-	end
+get '/user/:id' do
+  content_type :json
+  user = User.find_by_id(params[:id])
+  if user
+    User.all.as_json().to_json
+  else
+    status 404
+    'Not found'
+  end
 end
 		
 	
