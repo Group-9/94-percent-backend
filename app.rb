@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/cross_origin'
-
+require 'json'
 Dir[File.join('models', '**/*.rb')].each do |f|
   require_relative f
 end
@@ -21,6 +21,22 @@ get '/level' do
   Level.all.as_json(include: { questions: { only: [:id, :text] } }).to_json
 end
 
+get '/level/:id' do
+  content_type :json
+  level = Level.find_by_id(params[:id])
+  if level
+    level.as_json(include: { questions: { only: [:id,:text] } }).to_json
+  else
+    status 404
+    'Not found'
+  end
+end
+
+get '/question' do
+  content_type :json
+  Question.all.as_json(include: { answers: { only: [:id, :percent, :text] } }).to_json
+end
+
 get '/question/:id' do
   content_type :json
   question = Question.find_by_id(params[:id])
@@ -31,3 +47,51 @@ get '/question/:id' do
     'Not found'
   end
 end
+
+post '/createUser' do
+	content_type :json
+	payload = JSON.parse(request.body.read)
+	
+	age = payload[:age].to_i
+	gender = payload[:gender].to_i
+	education = payload[:education].to_i
+	newUser = User.create({age: age, gender: gender,education:education})
+	newUser.as_json.to_json
+
+
+end
+
+post '/createEntry' do
+	content_type :json
+	payload = JSON.parse(request.body.read)
+	
+	question_id = payload[:question_id].to_i
+	user_id = payload[:user_id].to_i
+	text = payload[:text]
+	newEntry = User.create({question_id: question_id, user_id: user_id,text:text})
+	newEntry.as_json.to_json
+
+
+end
+
+get '/user/:age/:gender/:education' do
+
+	@age = params[:age].to_i
+	@gender = params[:gender]
+	@education = params[:education]
+	if(@age < 2)
+		if @gender == "true"
+			"You have just created a user that is #{@age} year old and is male."
+		else
+		"You have just created a user that is #{@age} year old and is female."
+		end
+	else
+		if @gender == "true"
+			"You have just created a user that is #{@age} years old and is male." 
+		else
+			"You have just created a user that is #{@age} years old and is female."
+		end
+	end
+end
+		
+	
