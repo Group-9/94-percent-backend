@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 20160324120713) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "age"
-    t.integer  "gender"
     t.integer  "education"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "gender"
     t.integer  "employment_status"
   end
 
