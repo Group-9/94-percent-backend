@@ -18,8 +18,12 @@ post '/createUser'
 - Creates a User from the parameters given in the payload. It then returns the newly created user.
 - Payload must be in the following order and have the following variable names.
 - age : integer
-- gender : integer
-- education : integer
+- gender : integer (between 0 to 2) 
+	(Male, Female, Other)
+- education : integer (between 0 to 6)
+	(None, Primary, Secondary, Diploma, Bachelor's, Masters, Docotorate)
+- employment : integer (between 0 to 2)
+	(Student, Employed, Unemployed)
 
 
 post '/createEntry' do
