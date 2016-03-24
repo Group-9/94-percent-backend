@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314154140) do
+ActiveRecord::Schema.define(version: 20160324120713) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "percent"
@@ -44,10 +44,11 @@ ActiveRecord::Schema.define(version: 20160314154140) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "age"
-    t.boolean  "gender"
-    t.string   "education"
+    t.integer  "gender"
+    t.integer  "education"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "employment_status"
   end
 
 end
