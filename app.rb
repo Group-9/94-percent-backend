@@ -24,6 +24,11 @@ get '/' do
   '94% Server'
 end
 
+get '/entry' do
+  content_type :json
+  Entry.all.as_json.to_json
+end
+
 get '/level' do
   content_type :json
   Level.all.as_json(include: { questions: { only: [:id, :text] } }).to_json
