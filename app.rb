@@ -63,7 +63,8 @@ post '/createUser' do
   age = payload[:age].to_i
   gender = payload[:gender].to_i
   education = payload[:education].to_i
-  newUser = User.create({ age: age, gender: gender, education: education })
+  employment_status = payload[:employment_status].to_i
+  newUser = User.create({ age: age, gender: gender, education: education, employment_status: employment_status })
   newUser.as_json.to_json
 
 
