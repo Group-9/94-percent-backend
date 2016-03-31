@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/cross_origin'
 require 'json'
+require 'erb'
+
 Dir[File.join('models', '**/*.rb')].each do |f|
   require_relative f
 end
@@ -97,9 +99,25 @@ get '/user/:id' do
   content_type :json
   user = User.find_by_id(params[:id])
   if user
-    User.all.as_json.to_json
+    user.as_json.to_json
   else
     status 404
     'Not found'
   end
+end
+
+get '/admin' do
+  erb :admin
+end
+
+get '/admin/level' do
+  erb :level
+end
+
+get '/admin/question' do
+  erb :question
+end
+
+get '/admin/answer' do
+  erb :answer
 end
