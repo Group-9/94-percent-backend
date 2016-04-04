@@ -113,19 +113,31 @@ get '/admin/level' do
   erb :level
 end
 
+post '/admin/level' do
+  text = params[:text]
+  newLevel = Level.create()
+  newLevel.as_json.to_json
+end
+
 get '/admin/question' do
   erb :question
 end
 
 post '/admin/question' do
- / payload = JSON.parse(request.body.read, symbolize_names: true)/
   text = params[:text]
   level_id = params[:level_id].to_i
   newQuestion = Question.create({ text: text,level_id: level_id })
-  newEntry.as_json.to_json
+  newQuestion.as_json.to_json
 end
 
 get '/admin/answer' do
   erb :answer
+end
+
+post '/admin/question' do
+  text = params[:text]
+  question_id = params[:question_id].to_i
+  newAnswer = answer.create({ text: text,question_id: question_id,percentage:percentage })
+  newAnswer.as_json.to_json
 end
 
