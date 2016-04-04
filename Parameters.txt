@@ -3,40 +3,62 @@
 get '/level'
 - Prints all Levels currently in database
 
+
+
 get '/level/:id'
 - Prints a certain level by the id number given. 404 error if level doesn't exist.
 -id : Integer
 
+
+
+
 get '/question'
 - Prints all Questions currently in database
+
+
 
 get '/question/:id'
 - Prints a certain Question by the id number given. 404 error if Question doesn't exist.
 -id : Integer
 
+
+
 post '/createUser'
 - Creates a User from the parameters given in the payload. It then returns the newly created user.
+
 - Payload must be in the following order and have the following variable names.
+
 - age : integer
 - gender : integer (between 0 to 2) 
 	(Male, Female, Other)
+
 - education : integer (between 0 to 6)
 	(None, Primary, Secondary, Diploma, Bachelor's, Masters, Docotorate)
+
 - employment : integer (between 0 to 2)
 	(Student, Employed, Unemployed)
 
 
+
+
 post '/createEntry' do
 - Creates an Entry from the parameters given in the payload. It then returns the newly created Entry.
+
 - Payload must be in the following order and have the following variable names.
+
 - question_id : integer
 - user_id : integer
+
 - text : text
+
+
 
 
 get '/users' 
 - Prints all Users currently in database
 
 get '/users/:id'
+
 - Prints a certain user by the id number given. 404 error if user doesn't exist.
+
 -id : Integer

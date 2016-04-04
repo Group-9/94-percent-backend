@@ -23,7 +23,7 @@ options "*" do
 end
 
 get '/' do
-  '94% Server'
+  '94% Server Admin Interface'
 end
 
 get '/entry' do
@@ -74,7 +74,6 @@ post '/createUser' do
   newUser = User.create({ age: age, gender: gender, education: education, employment_status: employment_status })
   newUser.as_json.to_json
 
-
 end
 
 post '/createEntry' do
@@ -114,10 +113,31 @@ get '/admin/level' do
   erb :level
 end
 
+post '/admin/level' do
+  text = params[:text]
+  newLevel = Level.create()
+  newLevel.as_json.to_json
+end
+
 get '/admin/question' do
   erb :question
+end
+
+post '/admin/question' do
+  text = params[:text]
+  level_id = params[:level_id].to_i
+  newQuestion = Question.create({ text: text,level_id: level_id })
+  newQuestion.as_json.to_json
 end
 
 get '/admin/answer' do
   erb :answer
 end
+
+post '/admin/question' do
+  text = params[:text]
+  question_id = params[:question_id].to_i
+  newAnswer = answer.create({ text: text,question_id: question_id,percentage:percentage })
+  newAnswer.as_json.to_json
+end
+
