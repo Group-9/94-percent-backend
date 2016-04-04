@@ -14,7 +14,7 @@ When you've got bundler installed you can install the Gems for the project.
 `cd` into the project. After that run:
 
 ```bash
-$ bundle install
+$ bundle install --without production
 ```
 
 ## Create the database
@@ -27,6 +27,7 @@ At this point you should be able to start the server with
 ```bash
 $ bundle exec ruby app.rb
 ```
+You can access the server at `http://localhost:3000`
 
 ## Creating migration files
 To create a migration file when changing the database schema run
@@ -39,3 +40,10 @@ $ bundle exec rake db:create_migration NAME=create_questions
 ```
 
 After you create a migration you'll have to run `bundle exec rake db:migrate` again to reflect those changes in the database.
+
+## Running a console
+To run a console where you can do things like `Level.all` `Question.first` run
+```bash
+$ bin/console
+```
+<kbd>CTRL</kbd>+<kbd>D</kbd> will quit IRB
