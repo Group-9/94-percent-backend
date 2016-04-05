@@ -85,8 +85,6 @@ post '/createEntry' do
   text = payload[:text]
   newEntry = Entry.create({ question_id: question_id, user_id: user_id, text: text })
   newEntry.as_json.to_json
-
-
 end
 
 get '/user' do
@@ -114,30 +112,33 @@ get '/admin/level' do
 end
 
 post '/admin/level' do
-  text = params[:text]
-  newLevel = Level.create()
+  number = params[:level_number]
+  newLevel = Level.create({number: number})
   newLevel.as_json.to_json
 end
 
 get '/admin/question' do
+  @levels = Level.all
   erb :question
 end
 
 post '/admin/question' do
   text = params[:text]
   level_id = params[:level_id].to_i
-  newQuestion = Question.create({ text: text,level_id: level_id })
+  newQuestion = Question.create({ text: text, level_id: level_id })
   newQuestion.as_json.to_json
 end
 
 get '/admin/answer' do
+  @questions = Question.all
   erb :answer
 end
 
-post '/admin/question' do
+post '/admin/answer' do
   text = params[:text]
   question_id = params[:question_id].to_i
-  newAnswer = answer.create({ text: text,question_id: question_id,percentage:percentage })
+  percent = params[:percent].to_i
+  newAnswer = Answer.create({ text: text, question_id: question_id, percent: percent })
   newAnswer.as_json.to_json
 end
 

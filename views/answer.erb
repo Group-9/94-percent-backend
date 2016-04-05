@@ -1,17 +1,26 @@
-<html>
-    <head>
-        <title>Create Answer</title>
-    </head>
-<body>
-
 <h1>Answer Creation Form</h1>
 
 <form action="/admin/answer" method="POST">
-    text: <input type="text" name="text">
-	question_id: <input type ="integer" name="question_id">
-	percentage: <input type ="integer" name="percentage">
-    <input type="submit">
-</form>
+  <div class="form-group">
+    <label for="question_id">Question</label>
+    <select class="form-control" id="level_id">
+      <% @questions.each do |question| %>
+        <option value="<%= question.id %>"><%= question.text %></option>
+      <% end %>
+    </select>
+  </div>
 
-</body>
-</html>
+  <div class="form-group">
+    <label for="text">Text</label>
+    <input class="form-control" id="text" type="text" name="text">
+  </div>
+
+  <div class="form-group">
+    <label for="percent">Percent</label>
+    <input class="form-control" id="percent" type="number" name="percent">
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary">
+  </div>
+</form>

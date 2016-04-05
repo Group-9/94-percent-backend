@@ -1,16 +1,21 @@
-<html>
-    <head>
-        <title>Create Question</title>
-    </head>
-<body>
-
-<h1>Fill Out This Form</h1>
+<h1>Question Creation Form</h1>
 
 <form action="/admin/question" method="POST">
-    text: <input type="text" name="text">
-	level: <input type ="integer" name="level_id">
-    <input type="submit">
-</form>
+  <div class="form-group">
+    <label for="level_id">Level</label>
+    <select class="form-control" id="level_id">
+      <% @levels.each do |level| %>
+        <option value="<%= level.id %>"><%= level.number %></option>
+      <% end %>
+    </select>
+  </div>
 
-</body>
-</html>
+  <div class="form-group">
+    <label for="text">Text</label>
+    <input class="form-control" id="text" type="text" name="text">
+  </div>
+
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary">
+  </div>
+</form>

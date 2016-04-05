@@ -1,13 +1,12 @@
-<html>
-    <head>
-        <title>Create Level</title>
-    </head>
-<body>
-
 <h1>Level Creation Form</h1>
 
 <form action="/admin/level" method="POST">
-</form>
+  <div class="form-group">
+    <label for="level_number">Level Number</label>
+    <input id="level_number" type="number" name="level_number">
+  </div>
 
-</body>
-</html>
+  <div class="form-group">
+    <input type="submit" class="btn btn-primary">
+  </div>
+</form>
