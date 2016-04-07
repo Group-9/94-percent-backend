@@ -113,8 +113,8 @@ end
 
 post '/admin/level' do
   number = params[:level_number]
-  newLevel = Level.create({number: number})
-  newLevel.as_json.to_json
+  Level.create({number: number})
+  redirect back
 end
 
 get '/admin/question' do
@@ -125,8 +125,8 @@ end
 post '/admin/question' do
   text = params[:text]
   level_id = params[:level_id].to_i
-  newQuestion = Question.create({ text: text, level_id: level_id })
-  newQuestion.as_json.to_json
+  Question.create({ text: text, level_id: level_id })
+  redirect back
 end
 
 get '/admin/answer' do
@@ -138,7 +138,7 @@ post '/admin/answer' do
   text = params[:text]
   question_id = params[:question_id].to_i
   percent = params[:percent].to_i
-  newAnswer = Answer.create({ text: text, question_id: question_id, percent: percent })
-  newAnswer.as_json.to_json
+  Answer.create({ text: text, question_id: question_id, percent: percent })
+  redirect back
 end
 
