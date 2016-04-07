@@ -47,3 +47,31 @@ To run a console where you can do things like `Level.all` `Question.first` run
 $ bin/console
 ```
 <kbd>CTRL</kbd>+<kbd>D</kbd> will quit IRB
+
+# Deployment Instructions
+## Heroku App Creation
+Create an account on [Heroku](https://heroku.com).  
+On the Heroku dashboard you will need to create a new application. You will also need to add the "Heroku Postgres" addon for the database.
+
+## Heroku Local Tools Install
+You will need to install the [Heroku Toolbelt](https://toolbelt.heroku.com/).  
+Once it is installed you will need to login using the following command:
+```bash
+$ heroku login
+```
+
+## Deploying to Heroku
+First you want to change directory to the project directory.  
+Then you will need to tell `git` about the Heroku app we made.
+```bash
+$ heroku git:remote -a app-name-here
+```
+Then you will be able to push to Heroku to deploy the application:
+```bash
+$ git push heroku master
+```
+If this is the first time deploying the application you will also need to setup the database using:
+```bash
+$ heroku run bundle exec rake db:migrate
+```
+After that you should be able to access the app at `app-name-here.herokuapp.com`
