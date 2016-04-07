@@ -3,7 +3,7 @@
 <form action="/admin/answer" method="POST">
   <div class="form-group">
     <label for="question_id">Question</label>
-    <select class="form-control" id="level_id">
+    <select name="question_id" class="form-control" id="question_id">
       <% @questions.each do |question| %>
         <option value="<%= question.id %>"><%= question.text %></option>
       <% end %>

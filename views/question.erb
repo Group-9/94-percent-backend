@@ -3,7 +3,7 @@
 <form action="/admin/question" method="POST">
   <div class="form-group">
     <label for="level_id">Level</label>
-    <select class="form-control" id="level_id">
+    <select name="level_id" class="form-control" id="level_id">
       <% @levels.each do |level| %>
         <option value="<%= level.id %>"><%= level.number %></option>
       <% end %>
